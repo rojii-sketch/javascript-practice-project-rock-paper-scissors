@@ -2,24 +2,23 @@ const todoList = [{name:'wash dishes', duedate: '2022-12-22'},{name:'make dinner
 renderTodoList();
 function renderTodoList(){
   let todoListHTML = '';
-
-for (let i= 0; i < todoList.length; i++){
-  const todoObject = todoList[i];
-  //const name = todoObject.name;
-  //const duedate= todoObject.duedate;
+todoList.forEach(function(todoObject, index){
+ 
+  
   const { name, duedate} = todoObject;
   const html = 
   `<div>${name}</div>
   <div>${duedate}</div>
   <button onClick="
-   todoList.splice(${i}, 1);
+   todoList.splice(${index}, 1);
    renderTodoList();
   
   " class="delete-todo-button">Delete</button>
 `;
   todoListHTML += html;
 
-}
+});
+
 
 document.querySelector('.js-todo-list')
 .innerHTML = todoListHTML;
